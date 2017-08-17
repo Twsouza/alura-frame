@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>TITULO</h1>
+    <p>PARAGRAFO</p>
+    <div>DADOS</div>
+
+   <!--  
+    <script>
+        console.log(this); // é window
+
+        let exibeConteudo = function() {
+            console.log(this);
+            alert(this.textContent);
+        };
+
+        $ = document.querySelector.bind(document);
+
+        $('h1').addEventListener('click', exibeConteudo);
+
+        $('p').addEventListener('click', exibeConteudo);
+
+        $('div').addEventListener('click', exibeConteudo);
+
+    </script> 
+    -->
+    <!-- 
+    <script>
+        console.log(this); // é window
+
+        // arrow function agora!
+        let exibeConteudo = () =>  {
+            console.log(this);
+            alert(this.textContent);
+        };
+
+        $ = document.querySelector.bind(document);
+
+        $('h1').addEventListener('click', exibeConteudo);
+
+        $('p').addEventListener('click', exibeConteudo);
+
+        $('div').addEventListener('click', exibeConteudo);
+
+    </script>
+    -->
+    <!-- 
+    <script>
+
+        class SistemaImpressao {
+
+            constructor() {
+                this._codigo = 2;
+            }
+
+            imprime(nomes) {
+
+                nomes.forEach(function(nome) {
+                    console.log(this);
+                    console.log(`${this._codigo}: ${nome}`);
+                });
+            }
+        }
+
+        let nomes = ['Flávio', 'Nico', 'Douglas'];
+        let si = new SistemaImpressao();
+        si.imprime(nomes);
+
+    </script>
+    -->
+    <script>
+
+        class SistemaImpressao {
+
+            constructor() {
+                this._codigo = 2;
+            }
+
+            imprime(nomes) {
+                // usando arrow function.
+                nomes.forEach(nome => {
+                    console.log(this);
+                    console.log(`${this._codigo}: ${nome}`);
+                });
+            }
+        }
+
+        let nomes = ['Flávio', 'Nico', 'Douglas'];
+        let si = new SistemaImpressao();
+        si.imprime(nomes);
+
+    </script>
+</body>
+</html>
