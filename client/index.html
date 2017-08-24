@@ -58,21 +58,18 @@
 		let negociacaoController = new NegociacaoController;
 	</script>
 	<script>
-		let negociacao = new Proxy(new Negociacao(new Date(), 1, 100), {
-			// get: function(target, prop, receiver) {
-			// 	console.log(`a propriedade "${prop}" foi interceptada`);
-			// 	return Reflect.get(target, prop, receiver);
-			// }
-
-			set: function(target, prop, value, receiver) {
-				console.log(`valor anterior: ${target[prop]} novo valor: ${value}`);
-				return Reflect.set(target, prop, value, receiver);
+		let lista = new Proxy(new ListaNegociacoes(), {
+			get: function(target, prop, receiver) {
+				if(['adiciona', 'esvazia'].includes(prop) && typeof(target[prop]) == typeof(Function)) {
+					return function() {
+						console.log(`interceptado ${prop}`);
+						Reflect.apply(target[prop], target, arguments);
+					}
+				}
+				return Reflect.get(target, prop, receiver);
 			}
 		});
-		// console.log(negociacao.quantidade);
-		// console.log(negociacao.valor);
-		negociacao._quantidade = 10;
-		negociacao._valor = 200;
+		lista.adiciona(new Negociacao(new Date(), 1, 100));
 	</script>
 </body>
 </html>
