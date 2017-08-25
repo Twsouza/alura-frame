@@ -1,7 +1,7 @@
 class Negociacao {
     constructor(data, quantidade, valor) {
         // _ é uma convenção que informa que o atributo só pode ser alterado pela função
-        this._data = new Date(data);
+        this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
 
