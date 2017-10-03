@@ -5,8 +5,6 @@ class ListaNegociacoes {
     }
 
     adiciona(negociacao) {
-        // gambirra
-        //this._negociacoes = [].concat(this._negociacoes, negociacao);
         this._negociacoes.push(negociacao);
     }
 
@@ -16,5 +14,14 @@ class ListaNegociacoes {
 
     esvazia() {
         this._negociacoes = [];
-    }
+	}
+
+	ordena(criterio) {
+		console.log('ordenando...');
+		this._negociacoes.sort(criterio);
+	}
+
+	inverteOrdem() {
+		this._negociacoes.reverse();
+	}
 }
