@@ -8,7 +8,7 @@ class NegociacaoController {
         this._listaNegociacoes = new Bind(
             new ListaNegociacoes(),
             new NegociacoesView($('#negociacoesView')),
-			'adiciona', 'esvazia'
+			'adiciona', 'esvazia', 'ordena', 'inverteOrdem'
 		);
 
         this._mensagem = new Bind(
@@ -19,9 +19,13 @@ class NegociacaoController {
 
 	adiciona(event) {
 		event.preventDefault();
-		this._listaNegociacoes.adiciona(this._criaNegociacao());
-		this._mensagem.texto = 'Negociação adicionada com sucesso';
-		this._limpaFormulario();
+		try {
+			this._listaNegociacoes.adiciona(this._criaNegociacao());
+			this._mensagem.texto = 'Negociação adicionada com sucesso';
+			this._limpaFormulario();
+		} catch (erro) {
+			this._mensagem.texto = erro;
+		}
 	}
 
 	importaNegociacoes() {
