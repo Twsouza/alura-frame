@@ -84,11 +84,6 @@ class NegociacaoController {
 		this._inputData.focus();
 	}
 
-	apaga() {
-		this._listaNegociacoes.esvazia();
-		this._mensagem.texto = 'Negociações apagadas com sucesso.';
-	}
-
 	ordena(coluna) {
 		if(this._ordemAtual == coluna) {
 			this._listaNegociacoes.inverteOrdem();
